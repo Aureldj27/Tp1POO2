@@ -12,3 +12,4 @@
 /home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.pdb
 /home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.genruntimeconfig.cache
 /home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/ref/tp1poo2.dll
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.sourcelink.json
