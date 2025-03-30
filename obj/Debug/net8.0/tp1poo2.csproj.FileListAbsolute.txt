@@ -1,0 +1,14 @@
+/home/aurel/workspace/p002/tp1poo2/bin/Debug/net8.0/tp1poo2
+/home/aurel/workspace/p002/tp1poo2/bin/Debug/net8.0/tp1poo2.deps.json
+/home/aurel/workspace/p002/tp1poo2/bin/Debug/net8.0/tp1poo2.runtimeconfig.json
+/home/aurel/workspace/p002/tp1poo2/bin/Debug/net8.0/tp1poo2.dll
+/home/aurel/workspace/p002/tp1poo2/bin/Debug/net8.0/tp1poo2.pdb
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.GeneratedMSBuildEditorConfig.editorconfig
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.AssemblyInfoInputs.cache
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.AssemblyInfo.cs
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.csproj.CoreCompileInputs.cache
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.dll
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/refint/tp1poo2.dll
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.pdb
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/tp1poo2.genruntimeconfig.cache
+/home/aurel/workspace/p002/tp1poo2/obj/Debug/net8.0/ref/tp1poo2.dll
