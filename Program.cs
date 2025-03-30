@@ -5,15 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Globalization;
+using Newtonsoft.Json;
 
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        // Création des utilisateurs
+        // Charger les données depuis le fichier JSON
+        var applicationData = DataManager.ChargerDonneesDepuisJSON();
+
+        // Création des utilisateurs (ou récupération depuis le fichier JSON)
         var client = new Client(1, "Jean Dupont", "jean@example.com", "motdepasse123");
         var vendeur = new Vendeur(2, "Marie Martin", "marie@example.com", "motdepasse456");
+
+        // Ajouter les utilisateurs aux données de l'application
+        applicationData.Clients.Add(client);
+        applicationData.Vendeurs.Add(vendeur);
 
         // Importation des fleurs depuis un fichier CSV
         var gestionFleurs = new GestionFleurs();
@@ -25,11 +33,20 @@ public class Program
             return;  // Arrête l'exécution si aucune fleur n'a été importée
         }
 
+        // Ajouter les fleurs à l'application
+        foreach (var fleur in gestionFleurs.Fleurs)
+        {
+            applicationData.Commandes.ForEach(c => c.Fleurs.Add(fleur)); // Ajout des fleurs aux commandes existantes
+        }
+
         // Création d'une commande
         var fleursCommandees = new List<Fleur> { gestionFleurs.Fleurs[0], gestionFleurs.Fleurs[1] }; // Exemple avec deux fleurs
         var commande = new Commande(1, client, fleursCommandees, "Carte de crédit");
         commande.CalculerMontantTotal();
         commande.AfficherDetailsCommande();
+
+        // Ajouter la commande à la liste des commandes
+        applicationData.Commandes.Add(commande);
 
         // Passage de la commande
         vendeur.PasserCommande(commande);
@@ -37,6 +54,12 @@ public class Program
         // Génération de la facture
         var facture = new Facture(commande);
         facture.GenererFacture();
+
+        // Ajouter la facture aux données de l'application
+        applicationData.Factures.Add(facture);
+
+        // Sauvegarder les données mises à jour dans le fichier JSON
+        DataManager.SauvegarderDonneesDansJSON(applicationData);
     }
 }
 
@@ -332,5 +355,58 @@ public class Fournisseur : Utilisateur, ICommande
     public void PayerCommande(int idCommande)
     {
         Console.WriteLine($"Paiement de la commande {idCommande} effectué par le fournisseur.");
+    }
+}
+
+
+public class ApplicationData
+{
+    public List<Client> Clients { get; set; } = new List<Client>();
+    public List<Vendeur> Vendeurs { get; set; } = new List<Vendeur>();
+    public List<Commande> Commandes { get; set; } = new List<Commande>();
+    public List<Facture> Factures { get; set; } = new List<Facture>();
+}
+
+
+public class DataManager
+{
+    private const string CheminFichierJson = "application_data.json"; // Nom du fichier JSON
+
+    // Charger les données depuis le fichier JSON (Utilisateurs, Commandes, Factures)
+    public static ApplicationData ChargerDonneesDepuisJSON()
+    {
+        try
+        {
+            if (File.Exists(CheminFichierJson))
+            {
+                var json = File.ReadAllText(CheminFichierJson);
+                var data = JsonConvert.DeserializeObject<ApplicationData>(json);
+                return data ?? new ApplicationData();
+            }
+            else
+            {
+                return new ApplicationData(); // Si le fichier n'existe pas, retourner un objet vide
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erreur lors du chargement des données : {ex.Message}");
+            return new ApplicationData(); // En cas d'erreur, retourner un objet vide
+        }
+    }
+
+    // Sauvegarder ou mettre à jour les données dans le fichier JSON
+    public static void SauvegarderDonneesDansJSON(ApplicationData data)
+    {
+        try
+        {
+            var json = JsonConvert.SerializeObject(data, Formatting.Indented);
+            File.WriteAllText(CheminFichierJson, json);
+            Console.WriteLine("Données sauvegardées dans le fichier JSON.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erreur lors de la sauvegarde des données : {ex.Message}");
+        }
     }
 }

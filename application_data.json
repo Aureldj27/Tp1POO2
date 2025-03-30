@@ -1,0 +1,122 @@
+{
+  "Clients": [
+    {
+      "Commandes": [],
+      "Id": 1,
+      "Nom": "Jean Dupont",
+      "Email": "jean@example.com",
+      "MotDePasse": "motdepasse123",
+      "Type": "Client"
+    }
+  ],
+  "Vendeurs": [
+    {
+      "Commandes": [
+        {
+          "Id": 1,
+          "Client": {
+            "Commandes": [],
+            "Id": 1,
+            "Nom": "Jean Dupont",
+            "Email": "jean@example.com",
+            "MotDePasse": "motdepasse123",
+            "Type": "Client"
+          },
+          "Fleurs": [
+            {
+              "Id": 1,
+              "Nom": "Rose",
+              "Couleur": "Rouge",
+              "Prix": 3.4,
+              "Description": "Parfumée et symbolise l'amour"
+            },
+            {
+              "Id": 2,
+              "Nom": "Tulipe",
+              "Couleur": "Jaune",
+              "Prix": 2.5,
+              "Description": "Printanière et élégante"
+            }
+          ],
+          "ModePaiement": "Carte de crédit",
+          "MontantTotal": 8.9,
+          "DateCommande": "2025-03-30T10:08:56.1024978+02:00",
+          "Statut": "En traitement"
+        }
+      ],
+      "Id": 2,
+      "Nom": "Marie Martin",
+      "Email": "marie@example.com",
+      "MotDePasse": "motdepasse456",
+      "Type": "Vendeur"
+    }
+  ],
+  "Commandes": [
+    {
+      "Id": 1,
+      "Client": {
+        "Commandes": [],
+        "Id": 1,
+        "Nom": "Jean Dupont",
+        "Email": "jean@example.com",
+        "MotDePasse": "motdepasse123",
+        "Type": "Client"
+      },
+      "Fleurs": [
+        {
+          "Id": 1,
+          "Nom": "Rose",
+          "Couleur": "Rouge",
+          "Prix": 3.4,
+          "Description": "Parfumée et symbolise l'amour"
+        },
+        {
+          "Id": 2,
+          "Nom": "Tulipe",
+          "Couleur": "Jaune",
+          "Prix": 2.5,
+          "Description": "Printanière et élégante"
+        }
+      ],
+      "ModePaiement": "Carte de crédit",
+      "MontantTotal": 8.9,
+      "DateCommande": "2025-03-30T10:08:56.1024978+02:00",
+      "Statut": "En traitement"
+    }
+  ],
+  "Factures": [
+    {
+      "Commande": {
+        "Id": 1,
+        "Client": {
+          "Commandes": [],
+          "Id": 1,
+          "Nom": "Jean Dupont",
+          "Email": "jean@example.com",
+          "MotDePasse": "motdepasse123",
+          "Type": "Client"
+        },
+        "Fleurs": [
+          {
+            "Id": 1,
+            "Nom": "Rose",
+            "Couleur": "Rouge",
+            "Prix": 3.4,
+            "Description": "Parfumée et symbolise l'amour"
+          },
+          {
+            "Id": 2,
+            "Nom": "Tulipe",
+            "Couleur": "Jaune",
+            "Prix": 2.5,
+            "Description": "Printanière et élégante"
+          }
+        ],
+        "ModePaiement": "Carte de crédit",
+        "MontantTotal": 8.9,
+        "DateCommande": "2025-03-30T10:08:56.1024978+02:00",
+        "Statut": "En traitement"
+      }
+    }
+  ]
+}
